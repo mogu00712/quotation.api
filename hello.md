@@ -74,9 +74,6 @@ To query the models of the manufacturer provide a JSON hash of *ID number of the
                     }, {
                         "vcode_id": "BMW",
                         "vcode_name": 2
-                    }, {
-                        "vcode_id": "Mazda",
-                        "vcode_name": 3
                     }
                 ]
             }

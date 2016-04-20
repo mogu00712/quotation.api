@@ -8,7 +8,7 @@ This is a API to query some information of quotation system.
 # Group Manufacturer & Model
 API-related resources of *Make & Model API*.
 
-## Manufacturer [/makeModel/all-makes]
+## Manufacturer [/makeModel/makes]
 Query information of makes
 
 The Manufacturer resource has the following attributes:
@@ -20,26 +20,29 @@ The Manufacturer resource has the following attributes:
 ### List All Manufacturer [POST]
 This API will get all of the *Manufacturers*.
 
+- vcode_id (ID number of the manufacturer) 
+
+- vcode_desc (Name of the manufacturer)
+
 + Response 200 (application/json)
 
-        [
-            {
-                "success": true,
-                "msg": "",
-                "data": [
-                    {
-                        "vcode_id": "Audi",
-                        "vcode_name": 1
-                    }, {
-                        "vcode_id": "BMW",
-                        "vcode_name": 2
-                    }, {
-                        "vcode_id": "Mazda",
-                        "vcode_name": 3
-                    }
-                ]
-            }
-        ]
+        {
+            "data": [{
+                "vcode_id": "150",
+                "vcode_desc": "Alfa Romeo",
+                "vcode_parent": "0",
+                "costpertyre": "0",
+                "visible": "1"
+            }, {
+                "vcode_id": "36",
+                "vcode_desc": "BMW",
+                "vcode_parent": "0",
+                "costpertyre": "250",
+                "visible": "1"
+            }, ],
+            "success": true,
+            "msg": "Query Makes Successfully."
+        }
     
 ## Model [/makeModel/models]
 Query information of models of one make
@@ -55,26 +58,32 @@ The Model resource has the following attributes:
 
 To query the models of the manufacturer provide a JSON hash of *ID number of the make*
 
+- vcode_id (ID number of the model) 
+
+- vcode_desc (Name of the model)
+
 + Request (application/json)
 
         {
-            "make_id": "12"
+            "make_id": "4"
         }
 
 + Response 200 (application/json)
 
-        [
-            {
-                "success": true,
-                "msg": "",
-                "data": [
-                    {
-                        "vcode_id": "Audi",
-                        "vcode_name": 1
-                    }, {
-                        "vcode_id": "BMW",
-                        "vcode_name": 2
-                    }
-                ]
-            }
-        ]
+        {
+            "data": [{
+                "vcode_id": "990",
+                "vcode_desc": "300",
+                "vcode_parent": "4",
+                "costpertyre": null,
+                "visible": "1"
+            }, {
+                "vcode_id": "1381",
+                "vcode_desc": "300C",
+                "vcode_parent": "4",
+                "costpertyre": null,
+                "visible": "1"
+            }],
+            "success": true,
+            "msg": "Query Models Successfully."
+        }
